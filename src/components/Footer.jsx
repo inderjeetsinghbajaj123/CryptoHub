@@ -140,7 +140,7 @@ const Footer = () => {
             <p>
               <Link to="/privacy">Privacy Policy</Link> |{" "}
               <Link to="/terms">Terms of Service</Link> |{" "}
-              <Link to="/cookies">Cookies</Link>
+              <Link to="/cookies">Cookies</Link>|{" "}
             </p>
             <p>© {currentYear} CryptoHub. All rights reserved.</p>
           </div>

@@ -115,7 +115,7 @@ const App = () => {
             {<TermsOfService />} />
 
 
-
+  <Route path="/cookies" element={<CookiePolicy />} />
             </Routes>
             {!isDashboard && <Footer />}
           </div>
