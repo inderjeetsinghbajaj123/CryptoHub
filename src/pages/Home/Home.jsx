@@ -177,8 +177,8 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="table-container glass-panel">
-          <div className="table-header">
+        <div className="table-container overflow-x-auto">
+          <div className="table-header sticky top-0 z-10">
             <div className="col-rank">#</div>
             <div className="col-name">Asset</div>
             <div className="col-price">Price</div>
@@ -186,10 +186,11 @@ const Home = () => {
             <div className="col-mcap">Market Cap</div>
           </div>
 
-          <div className="table-body">
+          <div className="table-body overflow-y-auto max-h-96">
             {displayCoin && displayCoin.length > 0 ? (
               /* VIRTUAL SCROLLER IMPLEMENTATION */
               <Virtuoso
+              style={{height:'380px'}}
                 useWindowScroll
                 data={paginatedCoins}  
                 itemContent={(index, item) => (

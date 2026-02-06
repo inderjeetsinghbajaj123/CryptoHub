@@ -37,8 +37,8 @@ const MarketFilters = () => {
 };
 
   return (
-    <div className="market-filters">
-        <span className='filter-label' >Filters:</span>
+    <div className="market-filters flex flex-wrap items-center gap-2 overflow-x-auto">
+        <span className='filter-label mr-2 flex-shrink-0' >Filters:</span>
         <button className={`filter-btn  
             ${selectedFilters.includes("all") ? "active" : ""
             }`} 
