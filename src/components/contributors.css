@@ -777,7 +777,9 @@ body::before {
   max-width: 700px;
   max-height: 85vh;
   width: 92%;
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   animation: scaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   box-shadow: var(--shadow-lg), var(--shadow-purple-glow);
   position: relative;
@@ -805,9 +807,9 @@ body::before {
   align-items: center;
   padding: 2.5rem 2.5rem 2rem;
   border-bottom: 1px solid var(--border-base);
-  position: sticky;
-  top: 0;
-  background: linear-gradient(to bottom, var(--bg-surface), transparent);
+  position: relative;
+  flex-shrink: 0;
+  background: var(--bg-surface);
   z-index: 10;
 }
 
@@ -845,7 +847,9 @@ body::before {
 
 .contributors-modal-body {
   padding: 0 2.5rem 2.5rem;
-  max-height: 550px;
+  overflow-y: auto;
+  flex: 1;
+  -webkit-overflow-scrolling: touch;
 }
 
 .contributors-modal-pr-list {
@@ -969,11 +973,19 @@ body::before {
   .contributors-stats { gap: 1.5rem; }
   .contributors-modal-header { 
     flex-direction: column; 
-    gap: 1.5rem; 
-    text-align: center; 
+    gap: 1rem; 
+    text-align: center;
+    padding: 1.5rem;
+  }
+  .contributors-modal-body {
+    padding: 0 1.5rem 1.5rem;
   }
   .contributors-filters{
     flex-direction: column;
+  }
+  .contributors-modal {
+    max-height: 90vh;
+    width: 95%;
   }
 }
 
