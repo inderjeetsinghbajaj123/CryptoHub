@@ -15,7 +15,7 @@ function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
- 
+
 
   const isDashboardPage = location.pathname === "/dashboard";
 
@@ -27,7 +27,7 @@ function Navbar() {
 
   const handleDropdownLeave = () => {
     setOpenDropdown(null);
-    };
+  };
 
   const handleDropdownClick = (label) => {
     setOpenDropdown(openDropdown === label ? null : label);
@@ -65,7 +65,7 @@ function Navbar() {
       if (openDropdown && !e.target.closest(".dropdown-container")) {
         setOpenDropdown(null);
       }
-      if (isProfileOpen && !event.target.closest('.profile-menu-container')) {
+      if (isProfileOpen && !e.target.closest('.profile-menu-container')) {
         setIsProfileOpen(false);
       }
     };
@@ -78,11 +78,11 @@ function Navbar() {
     };
 
     document.addEventListener("click", handleClickOutside);
-    document.addEventListener("keydown", handleEscape);
+    document.addEventListener("keydown", handleEscapeKey);
 
     return () => {
       document.removeEventListener("click", handleClickOutside);
-      document.removeEventListener("keydown", handleEscape);
+      document.removeEventListener("keydown", handleEscapeKey);
     };
   }, [openDropdown, isProfileOpen]);
 
@@ -113,9 +113,8 @@ function Navbar() {
 
   return (
     <nav
-      className={`navbar ${scrolled ? "scrolled" : ""} ${
-        isMobileMenuOpen ? "has-mobile-menu" : ""
-      } ${isDashboardPage ? "is-dashboard" : ""}`}
+      className={`navbar ${scrolled ? "scrolled" : ""} ${isMobileMenuOpen ? "has-mobile-menu" : ""
+        } ${isDashboardPage ? "is-dashboard" : ""}`}
     >
       <div className="navbar-content">
         {/* Logo */}
@@ -153,7 +152,7 @@ function Navbar() {
                       {link.label}
                     </span>
 
-                    <ul 
+                    <ul
                       className={`dropdown-menu ${openDropdown === link.label ? 'show' : ''}`}
                       role="menu"
                       aria-label={`${link.label} submenu`}
@@ -175,9 +174,8 @@ function Navbar() {
                 ) : (
                   <Link
                     to={link.to}
-                    className={`navbar-link ${
-                      location.pathname === link.to ? "active" : ""
-                    }`}
+                    className={`navbar-link ${location.pathname === link.to ? "active" : ""
+                      }`}
                     onClick={closeMobileMenu}
                   >
                     {link.label}
@@ -193,7 +191,7 @@ function Navbar() {
           <div className="desktop-auth">
             {currentUser ? (
               <div className="profile-menu-container">
-                <button 
+                <button
                   className="profile-icon-btn"
                   onClick={() => setIsProfileOpen(!isProfileOpen)}
                   aria-label="User profile menu"
@@ -201,15 +199,15 @@ function Navbar() {
                 >
                   <FiUser />
                 </button>
-                
+
                 <div className={`profile-dropdown ${isProfileOpen ? 'show' : ''}`}>
                   <div className="profile-dropdown-header">
                     <FiMail className="profile-icon" />
                     <span className="profile-email">{currentUser.email}</span>
                   </div>
-                  
+
                   <div className="profile-dropdown-divider"></div>
-                  
+
                   <div className="profile-dropdown-items">
                     {isEmailProvider() && (
                       <Link
@@ -221,12 +219,12 @@ function Navbar() {
                         <span>Change Password</span>
                       </Link>
                     )}
-                    
-                    <button 
+
+                    <button
                       onClick={() => {
                         setIsProfileOpen(false);
                         handleLogout();
-                      }} 
+                      }}
                       className="profile-dropdown-item logout-item"
                     >
                       <FiLogOut />
@@ -249,9 +247,8 @@ function Navbar() {
 
           {/* Mobile Toggle */}
           <button
-            className={`navbar-toggle ${
-              isMobileMenuOpen ? "active" : ""
-            }`}
+            className={`navbar-toggle ${isMobileMenuOpen ? "active" : ""
+              }`}
             onClick={toggleMobileMenu}
             aria-label="Toggle navigation"
           >
@@ -271,7 +268,7 @@ function Navbar() {
               <li key={link.label} className="mobile-menu-item">
                 {link.dropdown ? (
                   <>
-                    <span 
+                    <span
                       className="mobile-menu-link"
                       onClick={() => handleDropdownClick(link.label)}
                     >
@@ -296,9 +293,8 @@ function Navbar() {
                 ) : (
                   <Link
                     to={link.to}
-                    className={`mobile-menu-link ${
-                      location.pathname === link.to ? "active" : ""
-                    }`}
+                    className={`mobile-menu-link ${location.pathname === link.to ? "active" : ""
+                      }`}
                     onClick={closeMobileMenu}
                   >
                     {link.label}
