@@ -1,4 +1,4 @@
-/* eslint-disable react-refresh/only-export-components */
+
 import React, {
   createContext,
   useContext,
@@ -250,7 +250,7 @@ export const AuthProvider = ({ children }) => {
       // Set user immediately and stop loading - don't wait for Firestore
       setCurrentUser(user);
       setLoading(false);
-      
+
       if (user) {
         // Fetch additional user data from Firestore in the background
         try {
@@ -337,4 +337,4 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-export default AuthContext;
+
