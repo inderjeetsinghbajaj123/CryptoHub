@@ -38,6 +38,7 @@ import ContactUs from "./components/ContactUs";
 import FAQ from "./components/FAQ";
 import PageNotFound from "./components/PageNotFound";
 import About from "./components/About";
+import CryptoChatbot from "./CryptoChatbot/CryptoChatbot";
 import Feedback from "./pages/Feedback";
 import TrendingCoins from "@/pages/TrendingCoins";
 
@@ -190,6 +191,7 @@ const App = () => {
             {!isDashboard && !isAuthPage && <Footer />}
           </div>
           <ScrollToTop lenis={lenisRef.current} />
+          <CryptoChatbot />
         </AuthProvider>
       </ThemeProvider>
     </>
