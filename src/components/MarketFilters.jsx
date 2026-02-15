@@ -8,32 +8,15 @@ const MarketFilters = () => {
   const [open, setOpen] = useState(false);
 
   const toggleFilter = (filter) => {
-    // Clicking "all"
-    if (filter === "all") {
-      setSelectedFilters(["all"]);
-      return;
-    }
-
     setSelectedFilters((prev) => {
-      let updated = [...prev];
+      // If clicking "all", reset to all
+      if (filter === "all") return ["all"];
 
-      // Remove "all" if another filter is selected
-      updated = updated.filter((f) => f !== "all");
+      // If clicking the currently active filter, toggle off to "all"
+      if (prev.includes(filter)) return ["all"];
 
-      if (updated.includes(filter)) {
-        // Remove filter
-        updated = updated.filter((f) => f !== filter);
-      } else {
-        // Add filter
-        updated.push(filter);
-      }
-
-      // If nothing selected, reset to "all"
-      if (updated.length === 0) {
-        return ["all"];
-      }
-
-      return updated;
+      // Otherwise, switch to the new filter (single selection)
+      return [filter];
     });
   };
 
@@ -48,21 +31,21 @@ const MarketFilters = () => {
         <span className="filter-label">Filters:</span>
 
         <button
-          className={`filter-btn ${selectedFilters.includes("all") ? "active" : ""}`}
+          className={`market-filter-btn ${selectedFilters.includes("all") ? "active" : ""}`}
           onClick={() => toggleFilter("all")}
         >
           All Coins
         </button>
 
         <button
-          className={`filter-btn ${selectedFilters.includes("trending") ? "active" : ""}`}
+          className={`market-filter-btn ${selectedFilters.includes("trending") ? "active" : ""}`}
           onClick={() => toggleFilter("trending")}
         >
           Trending
         </button>
 
         <button
-          className={`filter-btn ${selectedFilters.includes("top_gainers") ? "active" : ""}`}
+          className={`market-filter-btn ${selectedFilters.includes("top_gainers") ? "active" : ""}`}
           onClick={() => toggleFilter("top_gainers")}
         >
           Top Gainers
