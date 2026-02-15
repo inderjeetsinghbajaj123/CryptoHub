@@ -139,13 +139,13 @@ const App = () => {
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/forgot-password" element={<ForgotPassword />} />
-                <Route 
-                  path="/verify-email" 
+                <Route
+                  path="/verify-email"
                   element={
                     <PrivateRoute>
                       <EmailVerification />
                     </PrivateRoute>
-                  } 
+                  }
                 />
                 <Route path="/contributors" element={<Contributors />} />
 
